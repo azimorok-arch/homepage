@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kebijakan Privasi - Sistem Informasi Cuti ESEMKA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <header class="border-b border-gray-200 pb-6 mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Kebijakan Privasi</h1>
+            <p class="text-sm text-gray-500">Terakhir diperbarui: Mei 2026</p>
+        </header>
+
+        <main class="space-y-6 text-leading-relaxed">
+            
+            <section>
+                <p class="text-gray-700 text-lg">
+                    Sistem Informasi Cuti ESEMKA adalah alat administrasi internal yang dikembangkan untuk menyederhanakan dan mengelola pengajuan cuti karyawan. Kami menghargai privasi karyawan dan berkomitmen untuk menangani semua data pribadi maupun profesional dengan tingkat keamanan dan transparansi yang tinggi.
+                </p>
+            </section>
+
+            <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-900 mb-3 border-b pb-2">1. Data yang Kami Kumpulkan</h2>
+                <p class="mb-3 text-gray-700">Sistem ini mengambil informasi akun berupa:</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Alamat email internal melalui Google Workspace Session API (<code class="bg-gray-100 px-1 py-0.5 rounded font-mono text-sm">Session.getActiveUser().getEmail()</code>).</li>
+                    <li>Nama lengkap karyawan.</li>
+                    <li>Divisi kerja.</li>
+                    <li>Sisa kuota hak cuti.</li>
+                    <li>Nama rekan kerja yang ditunjuk sebagai pelaksana tugas harian (<em>backup</em>).</li>
+                </ul>
+            </section>
+
+            <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-900 mb-3 border-b pb-2">2. Penggunaan Data</h2>
+                <p class="mb-3 text-gray-700">Data yang Anda berikan hanya digunakan secara internal untuk keperluan:</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Memvalidasi hak dan kuota tahunan pengajuan cuti.</li>
+                    <li>Mengirimkan email delegasi otorisasi izin kepada Supervisor, GM, dan HRD.</li>
+                    <li>Membangun arsip berkas lembar izin resmi dalam format PDF di Drive Manajemen.</li>
+                    <li>Mengirimkan laporan rekapitulasi data harian ke grup internal WhatsApp penanggung jawab.</li>
+                </ul>
+            </section>
+
+            <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h2 class="text-xl font-semibold text-gray-900 mb-3 border-b pb-2">3. Keamanan & Pihak Ketiga</h2>
+                <p class="text-gray-700">
+                    Data Anda disimpan secara aman di dalam infrastruktur Google Spreadsheet milik Manajemen. Sistem ini memanfaatkan API eksternal <strong>QuickChart.io</strong> hanya untuk memproses pembuatan gambar QR Code enkripsi data pengajuan, tanpa merekam data secara permanen di server mereka.
+                </p>
+            </section>
+
+        </main>
+
+        <footer class="border-t border-gray-200 mt-12 pt-6 text-center text-sm text-gray-400">
+            &copy; 2026 Sistem Informasi Cuti ESEMKA. Hak Cipta Dilindungi.
+        </footer>
+    </div>
+
+</body>
+</html>
