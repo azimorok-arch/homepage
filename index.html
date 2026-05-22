@@ -10,21 +10,25 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Proteksi CSS: Menonaktifkan seleksi teks dan highlight biru saat ditekan */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body, html {
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Mencegah scrollbar muncul */
-            /* Menggunakan gradasi gelap radial agar menyatu dengan efek lighting merah/biru pada foto */
+            overflow: hidden;
             background: radial-gradient(circle, #0d1117 0%, #05070a 100%);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Wrapper Utama untuk Efek Premium */
         .page-wrapper {
             position: relative;
             width: 100%;
@@ -32,10 +36,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px; /* Memberikan sedikit ruang bernapas di layar besar */
+            padding: 20px;
         }
 
-        /* Kontainer Gambar dengan Efek Shadow Lembut */
         .image-container {
             position: relative;
             max-width: 100%;
@@ -44,66 +47,89 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            border-radius: 8px; /* Sudut sedikit melengkung halus */
+            border-radius: 8px;
             overflow: hidden;
             transition: transform 0.5s ease;
         }
 
-        /* Animasi halus saat halaman pertama kali dimuat */
         .image-container:hover {
-            transform: scale(1.01); /* Efek jinjit mikro saat di-hover di desktop */
+            transform: scale(1.01);
         }
 
-        /* Pengaturan Gambar Utama (Kunci agar TIDAK TERPOTONG) */
         .showcase-img {
             max-width: 100%;
-            max-height: 90vh; /* Membatasi tinggi agar pas di semua rasio layar */
+            max-height: 90vh;
             width: auto;
             height: auto;
-            object-fit: contain; /* Menjamin foto tampil 100% utuh */
+            object-fit: contain;
             display: block;
             animation: fadeIn 1.2s ease-out;
+            
+            /* Proteksi CSS Khusus Gambar: Mencegah gambar ditarik/drag ke tab baru */
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none; /* Membuat gambar "kebal" dari klik mouse langsung */
         }
 
-        /* Overlay gradasi tipis di bawah gambar untuk memperkuat kesan dramatis */
-        .image-container::after {
-            content: '';
+        /* Lapisan Transparan di Atas Gambar (Proteksi Tambahan) */
+        .image-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(to top, rgba(5, 7, 10, 0.2) 0%, transparent 30%);
-            pointer-events: none;
+            z-index: 10;
         }
 
-        /* Animasi Fade In Gambar */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Optimasi Khusus untuk Layar Mobile (Portrait) */
         @media (max-width: 480px) {
-            .page-wrapper {
-                padding: 10px;
-            }
-            .showcase-img {
-                max-height: 85vh; /* Sedikit penyesuaian space untuk navigasi bawaan browser HP */
-            }
+            .page-wrapper { padding: 10px; }
+            .showcase-img { max-height: 85vh; }
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
     <main class="page-wrapper">
         <div class="image-container">
+            <div class="image-overlay"></div>
+            
             <img src="b443a968-40d4-4361-aee7-5282ae1946b4.jpeg" alt="Esemka Bima 1.3 Front" class="showcase-img">
         </div>
     </main>
+
+    <script>
+        // Memblokir kombinasi tombol inspect element dan save
+        document.addEventListener("keydown", function (e) {
+            // Blokir F12
+            if (e.key === "F12") {
+                e.preventDefault();
+                return false;
+            }
+            // Blokir Ctrl+Shift+I (Inspect), Ctrl+Shift+J (Console), Ctrl+U (View Source)
+            if (e.ctrlKey && (e.shiftKey && (e.key === "I" || e.key === "J") || e.key === "u" || e.key === "U")) {
+                e.preventDefault();
+                return false;
+            }
+            // Blokir Ctrl+S (Save Page)
+            if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Proteksi tambahan untuk mencegah drag gambar (antisipasi browser lama)
+        document.addEventListener('dragstart', function (e) {
+            if (e.target.nodeName === 'IMG') {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
 
 </body>
 </html>
