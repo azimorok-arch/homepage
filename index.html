@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESEMKA BIMA</title>
+    <title>Esemka Bima 1.3 - Landing Page</title>
     <style>
-        /* Menghilangkan margin bawaan browser dan scrollbar */
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -15,41 +15,95 @@
         body, html {
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Mencegah halaman bisa di-scroll */
-            background-color: #000; /* Warna latar belakang hitam jika gambar sedang loading */
-        }
-
-        /* Kontainer utama untuk menampung gambar */
-        .landing-container {
-            width: 100%;
-            height: 100vh;
+            overflow: hidden; /* Mencegah scrollbar muncul */
+            /* Menggunakan gradasi gelap radial agar menyatu dengan efek lighting merah/biru pada foto */
+            background: radial-gradient(circle, #0d1117 0%, #05070a 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Mengatur gambar agar responsif dan memenuhi layar */
-        .landing-image {
+        /* Wrapper Utama untuk Efek Premium */
+        .page-wrapper {
+            position: relative;
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Gambar akan terpotong secara proporsional untuk memenuhi layar */
-            object-position: center; /* Memastikan bagian tengah mobil tetap fokus */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Memberikan sedikit ruang bernapas di layar besar */
         }
 
-        /* Optimasi untuk layar handphone (portrait) */
-        @media (max-width: 768px) {
-            .landing-image {
-                object-fit: contain; /* Di HP, gambar utuh akan terlihat tanpa terpotong (menyisakan hitam di kanan-kiri) */
-                background-color: #05070a; /* Menyamakan warna latar belakang dengan tone gambar */
+        /* Kontainer Gambar dengan Efek Shadow Lembut */
+        .image-container {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border-radius: 8px; /* Sudut sedikit melengkung halus */
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        /* Animasi halus saat halaman pertama kali dimuat */
+        .image-container:hover {
+            transform: scale(1.01); /* Efek jinjit mikro saat di-hover di desktop */
+        }
+
+        /* Pengaturan Gambar Utama (Kunci agar TIDAK TERPOTONG) */
+        .showcase-img {
+            max-width: 100%;
+            max-height: 90vh; /* Membatasi tinggi agar pas di semua rasio layar */
+            width: auto;
+            height: auto;
+            object-fit: contain; /* Menjamin foto tampil 100% utuh */
+            display: block;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        /* Overlay gradasi tipis di bawah gambar untuk memperkuat kesan dramatis */
+        .image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5, 7, 10, 0.2) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        /* Animasi Fade In Gambar */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Optimasi Khusus untuk Layar Mobile (Portrait) */
+        @media (max-width: 480px) {
+            .page-wrapper {
+                padding: 10px;
+            }
+            .showcase-img {
+                max-height: 85vh; /* Sedikit penyesuaian space untuk navigasi bawaan browser HP */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="landing-container">
-        <img src="b443a968-40d4-4361-aee7-5282ae1946b4.jpeg" alt="Esemka Bima 1.3" class="landing-image">
-    </div>
+    <main class="page-wrapper">
+        <div class="image-container">
+            <img src="b443a968-40d4-4361-aee7-5282ae1946b4.jpeg" alt="Esemka Bima 1.3 Front" class="showcase-img">
+        </div>
+    </main>
 
 </body>
 </html>
