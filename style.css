@@ -1,0 +1,179 @@
+/* RESET UTAMA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Mengubah font kaku jadi modern */
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* NAVBAR MANAGEMENT */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* Bingkai Logo Sesuai Referensi Awal (Garis Pojok Kiri Atas-Bawah) */
+.logo-container {
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 6px 24px;
+    position: relative;
+}
+.logo-container::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -12px;
+    width: 12px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+.logo-text {
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+}
+
+/* Menu Tengah (Opsional, tapi bikin balance) */
+.nav-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    margin: 0 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+/* Tombol Reserve Kanan */
+.btn-reserve {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 25px;
+    border-right: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.3s ease;
+}
+.btn-reserve:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* HERO SECTION LOGIC */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 60px;
+}
+
+.hero-content {
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+}
+
+/* Teks Utama "MOBIL KEBANGGAN" */
+.main-title {
+    font-size: 4.8rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 3;
+    margin-bottom: -30px; /* Menumpuk cantik di atas background text */
+}
+
+/* Teks Transparan Besar "BIMA" di Belakang */
+.title-overlay {
+    font-size: 8rem;
+    font-weight: 900;
+    letter-spacing: 15px;
+    color: rgba(255, 255, 255, 0.04); /* Sangat tipis dan elegan */
+    text-transform: uppercase;
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    user-select: none;
+}
+
+/* Kontainer Gambar Mobil */
+.car-container {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    max-width: 800px;
+    /* Efek pendaran cahaya putih tipis di belakang mobil */
+    box-shadow: 0px -40px 120px rgba(255, 255, 255, 0.08);
+}
+
+.car-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Deskripsi Singkat di Bawah Gambar */
+.subtitle {
+    font-size: 1rem;
+    color: #7f7f7f;
+    max-width: 650px;
+    margin: 40px auto 0 auto;
+    line-height: 1.7;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+/* RESPONSIVE LAYOUT (Biar gak rusak di HP) */
+@media (max-width: 768px) {
+    .nav-links, .nav-auth {
+        display: none; /* Sembunyikan menu lain di HP agar tidak penuh */
+    }
+    .navbar {
+        padding: 20px;
+    }
+    .main-title {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        margin-bottom: -15px;
+    }
+    .title-overlay {
+        font-size: 4rem;
+        top: 20%;
+    }
+    .subtitle {
+        font-size: 0.85rem;
+        padding: 0 20px;
+    }
+}
