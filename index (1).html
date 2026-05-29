@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESEMKA BIMA</title>
+    <style>
+        /* Menghilangkan margin bawaan browser dan scrollbar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Mencegah halaman bisa di-scroll */
+            background-color: #000; /* Warna latar belakang hitam jika gambar sedang loading */
+        }
+
+        /* Kontainer utama untuk menampung gambar */
+        .landing-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Mengatur gambar agar responsif dan memenuhi layar */
+        .landing-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Gambar akan terpotong secara proporsional untuk memenuhi layar */
+            object-position: center; /* Memastikan bagian tengah mobil tetap fokus */
+        }
+
+        /* Optimasi untuk layar handphone (portrait) */
+        @media (max-width: 768px) {
+            .landing-image {
+                object-fit: contain; /* Di HP, gambar utuh akan terlihat tanpa terpotong (menyisakan hitam di kanan-kiri) */
+                background-color: #05070a; /* Menyamakan warna latar belakang dengan tone gambar */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-container">
+        <img src="b443a968-40d4-4361-aee7-5282ae1946b4.jpeg" alt="Esemka Bima 1.3" class="landing-image">
+    </div>
+
+</body>
+</html>
