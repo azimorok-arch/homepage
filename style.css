@@ -1,0 +1,175 @@
+/* RESET STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* Bingkai Futuristik Kiri (Logo) */
+.logo-container {
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 5px 20px;
+    position: relative;
+}
+.logo-container::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+.logo-text {
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+}
+
+.nav-links a {
+    color: #cccccc;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+/* Bingkai Futuristik Kanan (Reserve) */
+.btn-reserve {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 25px;
+    border-right: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+    display: inline-block;
+}
+
+.btn-reserve:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+}
+
+/* Teks Utama */
+.main-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #e0e0e0;
+    margin-bottom: -40px; /* Membuat teks agak bertumpuk dengan background */
+}
+
+/* Teks Transparan di Belakang "SPEED" */
+.title-overlay {
+    font-size: 6rem;
+    font-weight: 900;
+    letter-spacing: 12px;
+    color: rgba(255, 255, 255, 0.05);
+    text-transform: uppercase;
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Kontainer Mobil & Efek Smoke/Glow */
+.car-container {
+    position: relative;
+    z-index: 2;
+    margin: 20px auto;
+    max-width: 750px;
+    /* Efek bayangan dan cahaya lembut di bawah mobil */
+    box-shadow: 0px -30px 100px rgba(255, 255, 255, 0.1);
+}
+
+.car-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.7));
+}
+
+/* Deskripsi Bawah */
+.subtitle {
+    font-size: 1.1rem;
+    color: #8a8a8a;
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+/* RESPONSIVE DESIGN (Untuk Handphone) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Menyembunyikan menu di mobile, bisa dikembangkan jadi hamburger menu */
+    }
+    
+    .navbar {
+        padding: 20px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+        margin-bottom: -20px;
+    }
+
+    .title-overlay {
+        font-size: 3.5rem;
+        top: 15%;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        padding: 0 20px;
+    }
+}
