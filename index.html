@@ -20,7 +20,7 @@
             background-color: #000000;
         }
 
-        /* Container utama dengan Vignette yang lebih kuat untuk memunculkan efek neon */
+        /* Container utama dengan Vignette yang menonjolkan bagian tengah */
         .wrapper {
             position: relative;
             width: 100%;
@@ -28,7 +28,6 @@
             overflow: hidden;
         }
 
-        /* Vignette melingkar yang lebih gelap di sudut layar agar cahaya tengah semakin kontras */
         .wrapper::after {
             content: '';
             position: absolute;
@@ -36,12 +35,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(0,0,0,0.92) 100%);
+            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(0,0,0,0.95) 100%);
             pointer-events: none;
             z-index: 2;
         }
 
-        /* Landing Page Gambar dengan Efek Zoom-In & Cahaya Tajam */
+        /* Landing Page Gambar */
         .landing-page {
             width: 100%;
             height: 100%;
@@ -51,36 +50,23 @@
             background-size: cover;
             z-index: 1;
             
-            /* Animasi masuk beralih langsung ke animasi denyut neon yang lebih dramatis */
-            animation: cinematicZoomIn 3s cubic-bezier(0.25, 1, 0.5, 1) forwards, 
-                      glowIntense 3.5s ease-in-out infinite alternate;
+            /* Hanya MENGGUNAKAN SATU ANIMASI panjang (5 detik) yang berhenti di akhir (forwards) */
+            /* Dibuat sangat halus tanpa ada pengulangan (berkedip) */
+            animation: smoothMajesticEntry 5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
-        /* 1. Animasi Masuk: Bergerak maju (Zoom-In) dari skala normal 1 ke 1.06 */
-        @keyframes cinematicZoomIn {
+        /* Animasi Transisi Halus: Muncul -> Zoom In -> Cahaya Terang -> Berhenti */
+        @keyframes smoothMajesticEntry {
             0% {
                 opacity: 0;
-                transform: scale(1);
-                filter: brightness(0.4) contrast(1.1) drop-shadow(0 0 0px rgba(0, 212, 255, 0));
+                transform: scale(1); /* Mulai dari posisi agak jauh */
+                filter: brightness(0.2) contrast(1) saturate(1); /* Mulai dari gelap */
             }
             100% {
                 opacity: 1;
-                transform: scale(1.06); /* Mengunci di posisi sedikit nge-zoom maju */
-                filter: brightness(1.1) contrast(1.25);
-            }
-        }
-
-        /* 2. Animasi Cahaya Berdenyut: Menaikkan saturasi dan kecerahan lampu secara berkala */
-        @keyframes glowIntense {
-            0% {
-                filter: brightness(1) contrast(1.2) saturate(1.1) cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            50% {
-                /* Efek puncak cahaya: Lampu DRL biru dan latar merah akan terlihat sangat menyala */
-                filter: brightness(1.35) contrast(1.4) saturate(1.6) drop-shadow(0 0 15px rgba(0, 162, 255, 0.4));
-            }
-            100% {
-                filter: brightness(1.05) contrast(1.25) saturate(1.2);
+                transform: scale(1.06); /* Berhenti dalam keadaan sudah nge-zoom di depan */
+                /* Parameter ini mengunci cahaya lampu agar menyala tajam dan diam */
+                filter: brightness(1.2) contrast(1.25) saturate(1.4); 
             }
         }
     </style>
